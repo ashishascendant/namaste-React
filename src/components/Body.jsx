@@ -8,8 +8,9 @@ import useOnlinestatus from "./utils/useOnlinestatus";
 
 import Shimmers from "./utils/shimmers";
 
-import { useState,useEffect} from "react";
+import { useState,useEffect, useContext} from "react";
 import useOnlinestatus from "./utils/useOnlinestatus";
+import Usercontext from "./utils/Usercontext";
   
 const Body=()=>{
    
@@ -18,6 +19,8 @@ let [reallist,setreallist]=useState([])
 let [inputs ,setinputs] =useState("")
  let Onlinestatus=useOnlinestatus();
  let Promotedrestr = Promotedrest(Restcard);
+ let {setusername} =useContext(Usercontext);
+ let data = useContext(Usercontext);
 
 
 const fetchdata= async()=>{
@@ -65,7 +68,11 @@ const fetchdata= async()=>{
           let searchres=reallist.filter((resdata)=>resdata.info.name.toLowerCase().includes(inputs))
           setfilteredlist(searchres); 
         }}>search</button>
+
+          <input value = {data.PresentUser} onChange={(e)=>setusername(e.target.value)}  className="p-1 border border-solid ml-4 mr-1 mt-2"/> 
+          <button className="p-2 bg-cyan-300 mb-2 rounded-lg mt-2" >Enter</button>
         </div>
+       
         <div className= "flex flex-wrap gap-6 px-8 py-6 justify-center">
             {filteredlist.map((rest)=>(
               <Link to={"/rest/" + rest.info.id} key={rest.info.id} className="block w-75"  >  {rest.info.avgRating >=4.5? <Promotedrestr className="border-black border-2" resdata={rest}/> : <Restcard   className="border-black border-2"resdata={rest}/> }</Link>

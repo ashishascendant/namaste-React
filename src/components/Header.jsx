@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import useOnlinestatus from "./utils/useOnlinestatus";
+import Usercontext from "./utils/Usercontext";
+import { useContext } from "react";
 const Header=()=>{
     let OnlineStatus = useOnlinestatus();
+    let data = useContext(Usercontext);
    return (
   <div className="bg-white shadow-md sticky top-0 z-50">
 
@@ -20,50 +23,59 @@ const Header=()=>{
       {/* Navigation */}
       <div className="flex items-center gap-8 text-gray-700 font-medium">
 
-        <span className="flex items-center gap-1">
-          onlineStatus:
-          {OnlineStatus ? (
-            <span className="text-green-500 font-bold">●</span>
-          ) : (
-            <span className="text-red-500 font-bold">●</span>
-          )}
-        </span>
+       <ul className="flex items-center gap-8 text-gray-700 font-medium">
 
-        <Link
-          to="/"
-          className="hover:text-orange-500 transition duration-200"
-        >
-          HOME
-        </Link>
+  <li className="flex items-center gap-1">
+    onlineStatus:
+    {OnlineStatus ? (
+      <span className="text-green-500 font-bold">●</span>
+    ) : (
+      <span className="text-red-500 font-bold">●</span>
+    )}
+  </li>
 
-        <Link
-          to="/grocery"
-          className="hover:text-orange-500 transition duration-200"
-        >
-          GROCERY
-        </Link>
+  <li>
+    <Link to="/" className="hover:text-orange-500 transition duration-200">
+      HOME
+    </Link>
+  </li>
 
-        <Link
-          to="/aboutus"
-          className="hover:text-orange-500 transition duration-200"
-        >
-          ABOUT US
-        </Link>
+  <li>
+    <Link to="/grocery" className="hover:text-orange-500 transition duration-200">
+      GROCERY
+    </Link>
+  </li>
 
-        <Link
-          to="/contactus"
-          className="hover:text-orange-500 transition duration-200"
-        >
-          CONTACT US
-        </Link>
+  <li>
+    <Link to="/aboutus" className="hover:text-orange-500 transition duration-200">
+      ABOUT US
+    </Link>
+  </li>
 
-        <Link
-          to="/cart"
-          className="hover:text-orange-500 transition duration-200"
-        >
-          CART 🛒
-        </Link>
+  <li>
+    <Link to="/contactus" className="hover:text-orange-500 transition duration-200">
+      CONTACT US
+    </Link>
+  </li>
 
+  <li>
+    <Link to="/cart" className="hover:text-orange-500 transition duration-200">
+      CART 🛒
+    </Link>
+  </li>
+
+  {/* New Item */}
+  <li>
+    <Link to="/profile" className="hover:text-orange-500 transition duration-200">
+      PROFILE
+    </Link>
+  </li>
+
+  <li>
+      {data.PresentUser}
+  </li>
+
+</ul>
       </div>
 
     </div>
