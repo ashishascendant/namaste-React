@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import useOnlinestatus from "./utils/useOnlinestatus";
 import Usercontext from "./utils/Usercontext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 const Header=()=>{
     let OnlineStatus = useOnlinestatus();
     let data = useContext(Usercontext);
+    let cartItems= useSelector((store)=>store.cart.items)
+
    return (
   <div className="bg-white shadow-md sticky top-0 z-50">
 
@@ -60,7 +63,7 @@ const Header=()=>{
 
   <li>
     <Link to="/cart" className="hover:text-orange-500 transition duration-200">
-      CART 🛒
+      CART 🛒 - {cartItems.length} - Items
     </Link>
   </li>
 
