@@ -8,6 +8,8 @@ import Contactus from "./src/components/Contactus";
 import Error from "./Error";
 import Restaurantmenu from "./src/components/Restaurantmenu";
 import Usercontext from "./src/components/utils/Usercontext.js";
+import {Provider} from "react-redux"
+import appStore from "./src/components/utils/appStore.js";
 
 
 
@@ -21,12 +23,14 @@ useEffect(()=>{
 
 },[])
        return(
-        <Usercontext.Provider value={{PresentUser:username ,setusername}}> /* here the setusername is passed in the usercontext  */      
+        <Provider store={appStore}>
+        <Usercontext.Provider value={{PresentUser:username ,setusername}}> { /* here the setusername is passed in the usercontext  */   }   
         <div>
         <Header/>
         <Outlet/>
         </div> 
-        </Usercontext.Provider>     
+        </Usercontext.Provider>  
+        </Provider>   
        )
 }
  let Route = createBrowserRouter([
