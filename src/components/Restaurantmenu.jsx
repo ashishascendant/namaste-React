@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import Shimmers from "./utils/shimmers";
 import { useParams } from "react-router-dom";
 import useRestaurant from "./utils/useRestaurant";
+import { addItems } from "./utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const Restaurantmenu = () => {
   const { resId } = useParams();
   const restrainfo = useRestaurant(resId);
   const [openIndex, setOpenIndex] = useState(null);
+  const dispatch = useDispatch();
+  let handleaddItem = (items)=>{
+    dispatch(addItems(items))
+  }
 
   if (!restrainfo) return <Shimmers />;
 
@@ -81,6 +87,7 @@ const Restaurantmenu = () => {
                                    hover:text-white 
                                    hover:shadow-md 
                                    transition-all duration-200"
+                                   onClick={()=>handleaddItem(item)}
                                   
                       >
                         ADD
