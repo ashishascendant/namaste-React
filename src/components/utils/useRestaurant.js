@@ -1,20 +1,17 @@
-import React from 'react'
-import { RESTAURANTS } from './menumock';
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import menuData from "./mock_data.json";
 
 const useRestaurant = (resId) => {
-  
-   let [restrainfo, setrestrainfo] = useState(null);
+  const [restrainfo, setrestrainfo] = useState(null);
 
+  useEffect(() => {
+    // Simulating API delay (optional)
+    setTimeout(() => {
+      setrestrainfo(menuData);
+    }, 500);
+  }, [resId]);
 
-useEffect(() => {
-  setrestrainfo(RESTAURANTS);
-}, [resId]);
+  return restrainfo;
+};
 
-
-
-
- return restrainfo;
-  }
-
-export default useRestaurant
+export default useRestaurant;
