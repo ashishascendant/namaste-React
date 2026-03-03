@@ -10,6 +10,7 @@ import Restaurantmenu from "./src/components/Restaurantmenu";
 import Usercontext from "./src/components/utils/Usercontext.js";
 import {Provider} from "react-redux"
 import appStore from "./src/components/utils/appStore.js";
+import Cart from "./src/components/Cart.jsx";
 
 
 
@@ -59,6 +60,10 @@ useEffect(()=>{
        {
              path:"/rest/:resId",
              element:<Restaurantmenu/>
+       },
+       {
+              path:"/cart",
+              element:<Cart/>
        }
 ],
       

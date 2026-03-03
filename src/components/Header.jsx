@@ -7,6 +7,7 @@ const Header=()=>{
     let OnlineStatus = useOnlinestatus();
     let data = useContext(Usercontext);
     let cartItems= useSelector((store)=>store.cart.items)
+     console.log("Cart Items:", cartItems);
 
    return (
   <div className="bg-white shadow-md sticky top-0 z-50">
