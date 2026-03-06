@@ -54,7 +54,7 @@ useEffect(()=>{
               element: <Aboutus/>
        },
        {
-              path: "/contact",
+              path: "/contactus",
               element: <Contactus/>
        },
        {

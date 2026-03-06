@@ -1,9 +1,8 @@
 
-import { Link } from "react-router-dom";
 import Restcard,{Promotedrest} from "./Restcards";
 import restaurants from "./utils/mock_data";
 import { Link } from "react-router-dom";
-import useOnlinestatus from "./utils/useOnlinestatus";
+
 
 
 import Shimmers from "./utils/shimmers";
